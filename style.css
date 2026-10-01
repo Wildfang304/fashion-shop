@@ -1,0 +1,106 @@
+:root {
+  --hvid: #ffffff;
+  --beige-lys: #f7f3ec;
+  --beige: #e8dcc9;
+  --beige-kant: #b9a68c;
+  --tekst: #3d3023;
+  --discount: #a52222;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 30px;
+  background: var(--beige-lys);
+  min-height: calc(100vh - 60px);
+  color: var(--tekst);
+}
+
+* { box-sizing: border-box; }
+
+h1 { font-size: 2rem; }
+
+#kategorier a, fieldset, .produkt {
+  border-radius: 4px;
+}
+
+fieldset { padding: 16px; }
+legend { padding: 0 8px; }
+button { border-radius: 4px; }
+button:hover:not(:disabled), #kategorier a:hover { background: var(--beige); }
+.produkt { background: var(--hvid); padding: 16px; min-width: 0; }
+/* transition gør ændringen i placering og skygge blød over 180 millisekunder. */
+#produktliste .produkt { transition: transform 180ms ease, box-shadow 180ms ease; }
+/* Tastaturbrugere får samme effekt, når linket i kortet har fokus. */
+#produktliste .produkt:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(61, 48, 35, 0.1);
+}
+@media (hover: hover) and (pointer: fine) {
+  /* :hover gælder, når musen er over kortet. Negativ Y flytter det lidt op. */
+  #produktliste .produkt:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(61, 48, 35, 0.1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  /* Slå bevægelsen fra, hvis brugeren har valgt mindre bevægelse på sin enhed. */
+  #produktliste .produkt { transition: none; }
+  #produktliste .produkt:hover, #produktliste .produkt:focus-within { transform: none; }
+}
+.produkt img { display: block; border-radius: 4px; }
+.tilbud { border-radius: 3px; }
+
+#kategorier {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+a { color: var(--tekst); }
+#kategorier a { padding: 20px; border: 1px solid var(--beige-kant); background: var(--beige-lys); }
+fieldset { margin: 20px 0; border: 1px solid var(--beige-kant); background: var(--beige-lys); }
+button { padding: 10px 14px; margin: 4px; cursor: pointer; background: var(--hvid); color: var(--tekst); border: 1px solid var(--beige-kant); }
+button[aria-pressed="true"] { background: var(--beige); color: var(--tekst); border: 2px solid var(--tekst); }
+:focus-visible { outline: 3px solid var(--tekst); outline-offset: 3px; }
+.soldOut img { opacity: 0.5; }
+.udsolgt { font-weight: bold; }
+.tilbud { display: inline-block; padding: 6px 10px; background: var(--discount); color: var(--hvid); font-weight: bold; }
+footer { margin-top: 40px; font-size: 14px; }
+
+#produktliste {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.produkt img {
+  width: 100%;
+}
+
+.produkt a {
+  color: var(--tekst);
+  text-decoration: none;
+}
+
+.produkt h2 {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+#produktdetaljer {
+  max-width: 1000px;
+}
+
+#produktdetaljer img {
+  width: 50%;
+}
+
+@media (max-width: 900px) {
+  #produktliste { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 500px) {
+  body { margin: 16px; }
+  #produktliste { grid-template-columns: minmax(0, 1fr); }
+  #produktdetaljer img { width: 100%; }
+}

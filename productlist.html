@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Produktliste</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a href="index.html">← Kategorier</a>
+    <h1 id="overskrift">Produkter</h1>
+    <main>
+      <fieldset id="filtre" disabled>
+        <legend>Filtrer efter køn</legend>
+        <button type="button" data-gender="Alle" aria-pressed="true">Alle</button>
+        <button type="button" data-gender="Men" aria-pressed="false">Men</button>
+        <button type="button" data-gender="Women" aria-pressed="false">Women</button>
+        <button type="button" data-gender="Unisex" aria-pressed="false">Unisex</button>
+      </fieldset>
+      <fieldset id="sortering" disabled>
+        <legend>Sorter produkter</legend>
+        <button type="button" data-sort="price" data-direction="asc" aria-pressed="false">Pris: lav til høj</button>
+        <button type="button" data-sort="price" data-direction="desc" aria-pressed="false">Pris: høj til lav</button>
+        <button type="button" data-sort="name" data-direction="asc" aria-pressed="false">Navn: A–Å</button>
+        <button type="button" data-sort="name" data-direction="desc" aria-pressed="false">Navn: Å–A</button>
+      </fieldset>
+      <p id="status" role="status"></p>
+      <button id="proev-igen" type="button" hidden>Prøv igen</button>
+      <div id="produktliste"></div>
+    </main>
+    <footer>Data og billeder: <a href="https://www.kaggle.com/paramaggarwal/fashion-product-images-dataset">Fashion Product Images Dataset</a>.</footer>
+    <script src="shared.js"></script>
+    <script src="productlist.js"></script>
+  </body>
+</html>
